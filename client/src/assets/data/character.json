@@ -1,0 +1,14 @@
+[
+  {
+    "id": "1",
+    "title": "Naruto Uzumaki",
+    "description": "A spirited ninja from the Hidden Leaf Village, known for his determination and the dream of becoming Hokage.",
+    "imageUrl": "src/assets/images/naruto.png"
+  },
+  {
+    "id": "2",
+    "title": "Monkey D. Luffy",
+    "description": "The adventurous captain of the Straw Hat Pirates, famous for his rubber-like abilities and quest for the One Piece.",
+    "imageUrl": "src/assets/images/luffy.png"
+  }
+]

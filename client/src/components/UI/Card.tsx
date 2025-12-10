@@ -14,7 +14,7 @@ const Card:React.FC<Props> = ({id,title,description,imageUrl}) => {
   return (
     <div className='border-4 rounded-lg border-gray-200 bg-gray-200 shadow-xl cursor-pointer hover:shadow-gray-500 p-4 m-4 w-1/4 flex flex-col items-center' onClick={handleCardClick}>
     <img src={imageUrl} alt={title} className='w-[60] grow' />
-    <h1>{title}</h1>
+    <h1 className='font-bold my-4'>{title}</h1>
     <p>{description}</p>
     </div>
   )
