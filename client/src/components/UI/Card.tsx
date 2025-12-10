@@ -9,7 +9,7 @@ type Props={
 const Card:React.FC<Props> = ({id,title,description,imageUrl}) => {
     const navigate=useNavigate();
     const handleCardClick=()=>{
-        navigate(`/character/${id}`);
+        navigate(`/chat/${id}`);
     }
   return (
     <div className='border-4 rounded-lg border-gray-200 bg-gray-200 shadow-xl cursor-pointer hover:shadow-gray-500 p-4 m-4 w-1/4 flex flex-col items-center' onClick={handleCardClick}>
