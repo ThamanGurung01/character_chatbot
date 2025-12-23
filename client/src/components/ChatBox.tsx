@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
+import { messageChat } from '../services/Api'
 
-interface Message {
+export interface Message {
   id: string
   text: string
   sender: 'user' | 'character'
@@ -18,7 +19,7 @@ const ChatBox: React.FC<{ characterName: string }> = ({ characterName }) => {
         text: input,
         sender: 'user',
       }
-
+messageChat(userMessage);
       setMessages((prev) => [...prev, userMessage])
       setInput('')
 
