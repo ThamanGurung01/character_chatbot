@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useRef } from 'react'
 import { useParams } from 'react-router-dom'
 import { messageChat } from '../services/Api'
 
@@ -8,29 +8,54 @@ export interface Message {
   sender: 'user' | 'character'
 }
 
+interface ChatResponse {
+  successs: boolean
+  message: string
+  reply: {
+    text: string
+  }
+  id: string
+}
+
 const ChatBox: React.FC<{ characterName: string }> = ({ characterName }) => {
   const [messages, setMessages] = useState<Message[]>([])
   const [input, setInput] = useState('')
-    const {id}=useParams();
-  const handleSend = () => {
+  const { id } = useParams()
+  const messagesEndRef = useRef<HTMLDivElement>(null)
+
+  const scrollToBottom = () => {
+    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' })
+  }
+
+  useEffect(() => {
+    scrollToBottom()
+  }, [messages])
+  const handleSend = async () => {
     if (input.trim()) {
       const userMessage: Message = {
         id: Date.now().toString(),
         text: input,
         sender: 'user',
       }
-messageChat(userMessage);
+      
+      // Add user message immediately & clear input
       setMessages((prev) => [...prev, userMessage])
       setInput('')
 
-      setTimeout(() => {
-        const characterMessage: Message = {
-          id: (Date.now() + 1).toString(),
-          text: `Hello! I'm ${characterName}. Thanks for chatting with me!`,
-          sender: 'character',
-        }
-        setMessages((prev) => [...prev, characterMessage])
-      }, 500)
+      try {
+        const messageReply: ChatResponse = await messageChat(userMessage, id || '');
+
+        setTimeout(() => {
+          const characterMessage: Message = {
+            id: (Date.now() + 1).toString(),
+            text: messageReply.reply.text,
+            sender: 'character',
+          }
+          setMessages((prev) => [...prev, characterMessage])
+        }, 500)
+      } catch (error) {
+        console.error("Failed to send message:", error);
+      }
     }
   }
 
@@ -72,6 +97,7 @@ messageChat(userMessage);
             </div>
           ))
         )}
+        <div ref={messagesEndRef} />
       </div>
       <div className="border-t border-gray-200 p-4 bg-gray-50">
         <div className="flex gap-2">
