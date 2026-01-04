@@ -10,5 +10,17 @@
     "title": "Monkey D. Luffy",
     "description": "The adventurous captain of the Straw Hat Pirates, famous for his rubber-like abilities and quest for the One Piece.",
     "image": "luffy"
+  },
+  {
+    "id": "3",
+    "title": "Yor Forger",
+    "description": "A skilled assassin who leads a secretive life while maintaining her charming and elegant persona.",
+    "image": "yor"
+  },
+  {
+    "id": "4",
+    "title": "Shinobu Kocho",
+    "description": "The calm and graceful Insect Hashira, known for her mastery of poison techniques and serene demeanor.",
+    "image": "shinobu"
   }
 ]

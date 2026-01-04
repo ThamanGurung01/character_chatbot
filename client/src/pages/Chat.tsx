@@ -2,19 +2,13 @@ import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import Sidebar from '../components/Sidebar'
 import ChatBox from '../components/ChatBox'
-import naruto from '../assets/images/naruto.png'
-import luffy from '../assets/images/luffy.png'
+import { imageMap } from '../services/ImageMap'
 
 interface Character {
   id: string
   title: string
   description: string
   image: string
-}
-
-const imageMap: Record<string, string> = {
-  naruto,
-  luffy,
 }
 
 const Chat: React.FC = () => {

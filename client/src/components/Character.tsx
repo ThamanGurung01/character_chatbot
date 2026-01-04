@@ -1,12 +1,7 @@
 import React from 'react'
 import Card from './UI/Card';
 import characters from '../assets/data/character.json';
-import naruto from '../assets/images/naruto.png'
-import luffy from '../assets/images/luffy.png'
-const imageMap: Record<string, string> = {
-  naruto,
-  luffy,
-}
+import { imageMap } from '../services/ImageMap';
 const Character:React.FC = () => {
   return (
     <div className='flex gap-5'>

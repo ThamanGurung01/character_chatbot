@@ -1,18 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
-import naruto from '../assets/images/naruto.png'
-import luffy from '../assets/images/luffy.png'
-
+import { imageMap } from '../services/ImageMap'
 interface Character {
   id: string
   title: string
   description: string
   image: string
-}
-
-const imageMap: Record<string, string> = {
-  naruto,
-  luffy,
 }
 
 const Sidebar: React.FC = () => {
