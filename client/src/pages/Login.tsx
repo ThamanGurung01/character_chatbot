@@ -4,11 +4,11 @@ import { Link } from 'react-router-dom'
 const Login = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  const [remember, setRemember] = useState(false)
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    // Handle login logic here
-    console.log('Login:', { email, password })
+    console.log('Login:', { email, password, remember })
   }
 
   return (
@@ -23,6 +23,7 @@ const Login = () => {
             <input
               type="email"
               id="email"
+              autoComplete="username"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
@@ -36,11 +37,24 @@ const Login = () => {
             <input
               type="password"
               id="password"
+              autoComplete="current-password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
               required
             />
+          </div>
+          <div className="mb-6 flex gap-2">
+          <input
+              type="checkbox"
+              id="remember"
+              value={password}
+              onChange={(e) => setRemember(e.target.checked)}
+              required
+            />
+            <label htmlFor="remember" className="block text-gray-700 font-medium">
+              Remember Me
+            </label>
           </div>
           <button
             type="submit"
