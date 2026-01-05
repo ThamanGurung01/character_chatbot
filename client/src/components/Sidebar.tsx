@@ -26,9 +26,8 @@ const Sidebar: React.FC = () => {
   }, [])
 
   return (
-    <aside className="w-64 bg-gray-900 text-white h-screen overflow-y-auto border-r border-gray-700">
+    <aside className="w-64 bg-gray-900 text-white h-[94.1vh] overflow-y-auto border-r border-gray-700">
       <div className="p-4">
-        <h2 className="text-2xl font-bold mb-6 text-center"><a href="/">Home</a></h2>
         <nav className="space-y-2">
           {characters.map((character,index) => (
             <Link

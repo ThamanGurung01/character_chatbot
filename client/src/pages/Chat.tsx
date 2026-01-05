@@ -63,23 +63,23 @@ const Chat: React.FC = () => {
   }
 
   return (
-    <div className="flex h-screen bg-gray-100">
+    <div className="flex bg-gray-100 overflow-x-auto">
       <Sidebar />
 
-      <div className="flex-1 flex flex-col">
+      <div className="flex-1 flex flex-col min-w-0">
         <div className="bg-white border-b border-gray-200 p-4 flex items-center gap-4 shadow-sm">
           <img
             src={imageMap[character.image]}
             alt={character.title}
-            className="w-12 h-12 rounded-full object-cover"
+            className="w-12 h-12 rounded-full object-cover flex-shrink-0"
           />
-          <div>
+          <div className="min-w-0">
             <h1 className="text-2xl font-bold text-gray-900">{character.title}</h1>
             <p className="text-sm text-gray-600">{character.description}</p>
           </div>
         </div>
 
-        <div className="flex-1 p-6 overflow-hidden">
+        <div className="flex-1 p-6 min-w-0">
           <ChatBox characterName={character.title} />
         </div>
       </div>

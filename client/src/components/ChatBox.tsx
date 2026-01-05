@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react'
 import { useParams } from 'react-router-dom'
-import { messageChat } from '../services/Api'
+import { messageChat } from '../services/ApiMessage'
 
 export interface Message {
   id: string
@@ -28,7 +28,9 @@ const ChatBox: React.FC<{ characterName: string }> = ({ characterName }) => {
   }
 
   useEffect(() => {
-    scrollToBottom()
+    if (messages.length > 0) {
+      scrollToBottom()
+    }
   }, [messages])
   const handleSend = async () => {
     if (input.trim()) {
@@ -37,8 +39,6 @@ const ChatBox: React.FC<{ characterName: string }> = ({ characterName }) => {
         text: input,
         sender: 'user',
       }
-      
-      // Add user message immediately & clear input
       setMessages((prev) => [...prev, userMessage])
       setInput('')
 
@@ -74,7 +74,7 @@ const ChatBox: React.FC<{ characterName: string }> = ({ characterName }) => {
   },[id]);
   return (
     <div className="flex flex-col h-full bg-white rounded-lg shadow-lg">
-      <div className="flex-1 overflow-y-auto p-4 space-y-4">
+      <div className="flex-1 overflow-y-auto p-4">
         {messages.length === 0 ? (
           <div className="h-full flex items-center justify-center text-gray-400">
             <p>Start a conversation with {characterName}!</p>
